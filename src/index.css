@@ -1,0 +1,48 @@
+:root {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.03em;
+  color: #242424;
+  background-color: rgba(11, 54, 140, 0.08);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*? common colors */
+  --black: #000000;
+  --darkBorder: #212121;
+  --bgAvatar: #2a2a2a;
+  --bgProfile: #fafafa;
+  --darkGray: #808080;
+  --mediumGray: #d3d3d3;
+  --border-color: #ccc;
+  --whiteColor: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

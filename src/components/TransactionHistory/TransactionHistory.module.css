@@ -1,0 +1,53 @@
+.tablet {
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.valuesTitle {
+  color: white;
+  background-color: var(--bgAvatar);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.cellText {
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.headCell {
+  height: 30px;
+  width: 140px;
+  border: 1px solid var(--black);
+}
+
+.cell {
+  height: 30px;
+  width: 140px;
+  border: 1px solid var(--black);
+}
+
+.transactionValue {
+  background-color: var(--whiteColor);
+}
+
+.transactionValue:nth-child(even) {
+  background-color: var(--mediumGray);
+}
+
+.bgGray {
+  background-color: var(--mediumGray);
+}
+
+.border {
+  border-collapse: collapse;
+}
+
+.transactionValue {
+  border: 1px solid var(--darkBorder);
+}
