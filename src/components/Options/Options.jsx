@@ -1,18 +1,33 @@
 import s from "./Options.module.css";
 import clsx from "clsx";
 
-const Options = ({ good, neutral, bad }) => {
-  let theNumber = 0;
+const Options = ({ updateFeedback }) => {
   return (
     <div>
-      <h1>{theNumber}</h1>
-      <button className={clsx(s.btn)} onClick={() => good}>
+      <button
+        className={clsx(s.btn)}
+        onClick={() => {
+          updateFeedback("good");
+        }}
+      >
         Good
       </button>
-      <button className={clsx(s.btn)} onClick={() => neutral}>
+      <button
+        className={clsx(s.btn)}
+        onClick={() => {
+          updateFeedback("neutral");
+        }}
+      >
         Neutral
       </button>
-      <button className={clsx(s.btn)} onClick={() => bad}>
+      <button
+        className={clsx(s.btn)}
+        onClick={() => {
+          {
+            updateFeedback("bad");
+          }
+        }}
+      >
         Bad
       </button>
     </div>

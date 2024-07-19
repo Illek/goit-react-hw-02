@@ -1,5 +1,4 @@
 import Description from "./Description/Description";
-// import ButtonFeedback from "./Feedback/Feedback";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
 import { useState } from "react";
@@ -11,50 +10,38 @@ const App = () => {
     bad: 0,
   });
 
+  // Update current feedback state
   const updateFeedback = (feedbackType) => {
-    feedbackType(() => {
-      setFeedbackList({
-        ...feedbackList,
-        {fee}: feedbackList.{fee} + 1,
-      });
+    setFeedbackList({
+      ...feedbackList,
+      [feedbackType]: feedbackList[feedbackType] + 1,
     });
-    };
-
-    // const pressGood = () => {
-    //   setFeedbackList({
-    //     ...feedbackList,
-    //     good: feedbackList.good + 1,
-    //   });
-    // };
-    // const pressNeutral = () => {
-    //   setFeedbackList({
-    //     ...feedbackList,
-    //     neutral: feedbackList.neutral + 1,
-    //   });
-    // };
-    // const pressBad = () => {
-    //   setFeedbackList({
-    //     ...feedbackList,
-    //     bad: feedbackList.bad + 1,
-    //   });
-    // };
-
-    // const buttons = {
-    //   good: pressGood(),
-    //   neutral: pressNeutral(),
-    //   bad: pressBad(),
-    // };
-
-    return (
-      <div>
-        <main>
-          <Description />
-          <Options buttons={updateFeedback} />
-          <Feedback />
-        </main>
-      </div>
-    );
+    console.log(feedbackList[feedbackType]);
   };
+
+  // Total summary feedback
+  const totalFeedback =
+    feedbackList["good"] + feedbackList["neutral"] + feedbackList["bad"];
+
+  // Positive feedback coefficient
+  const positiveFeedback = Math.round(
+    (feedbackList["good"] / totalFeedback) * 100
+  );
+  console.log(positiveFeedback);
+
+  return (
+    <div>
+      <main>
+        <Description />
+        <Options updateFeedback={updateFeedback} />
+        <Feedback
+          feedbackList={feedbackList}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      </main>
+    </div>
+  );
 };
 
 export default App;
