@@ -11,14 +11,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*? common colors */
-  --black: #000000;
-  --darkBorder: #212121;
-  --bgAvatar: #2a2a2a;
-  --bgProfile: #fafafa;
-  --darkGray: #808080;
-  --mediumGray: #d3d3d3;
-  --border-color: #ccc;
-  --whiteColor: #ffffff;
 }
 
 a {
