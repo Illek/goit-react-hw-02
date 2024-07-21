@@ -1,14 +1,32 @@
 import Description from "./Description/Description";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [feedbackGrades, setFeedbackGrades] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [feedbackGrades, setFeedbackGrades] = useState(() => {
+    // good: 0,
+    // neutral: 0,
+    // bad: 0,
+    const savedGrades = JSON.parse(
+      window.localStorage.getItem("feedbackGrades")
+    );
+    if (savedGrades) {
+      return savedGrades;
+    }
+    return {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
   });
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "feedbackGrades",
+      JSON.stringify(feedbackGrades)
+    );
+  }, [feedbackGrades]);
 
   // Update current feedback state
   const updateFeedback = (feedbackType) => {
@@ -24,9 +42,10 @@ const App = () => {
     feedbackGrades["good"] + feedbackGrades["neutral"] + feedbackGrades["bad"];
 
   // Positive feedback coefficient
-  const positiveFeedback = Math.round(
-    (feedbackGrades["good"] / totalFeedback) * 100
-  );
+  const positiveFeedback =
+    totalFeedback > 0
+      ? Math.round((feedbackGrades["good"] / totalFeedback) * 100)
+      : 0;
   console.log(positiveFeedback); //***! Потом убрать !***//
 
   const resetFeedback = () => {
