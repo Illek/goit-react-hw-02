@@ -4,7 +4,7 @@ import Options from "./Options/Options";
 import { useState } from "react";
 
 const App = () => {
-  const [feedbackList, setFeedbackList] = useState({
+  const [feedbackGrades, setFeedbackGrades] = useState({
     good: 0,
     neutral: 0,
     bad: 0,
@@ -12,34 +12,50 @@ const App = () => {
 
   // Update current feedback state
   const updateFeedback = (feedbackType) => {
-    setFeedbackList({
-      ...feedbackList,
-      [feedbackType]: feedbackList[feedbackType] + 1,
+    setFeedbackGrades({
+      ...feedbackGrades,
+      [feedbackType]: feedbackGrades[feedbackType] + 1,
     });
-    console.log(feedbackList[feedbackType]);
+    console.log(feedbackGrades[feedbackType]);
   };
 
   // Total summary feedback
   const totalFeedback =
-    feedbackList["good"] + feedbackList["neutral"] + feedbackList["bad"];
+    feedbackGrades["good"] + feedbackGrades["neutral"] + feedbackGrades["bad"];
 
   // Positive feedback coefficient
   const positiveFeedback = Math.round(
-    (feedbackList["good"] / totalFeedback) * 100
+    (feedbackGrades["good"] / totalFeedback) * 100
   );
-  console.log(positiveFeedback);
+  console.log(positiveFeedback); //***! Потом убрать !***//
+
+  const resetFeedback = () => {
+    setFeedbackGrades({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
 
   return (
     <div>
-      <main>
-        <Description />
-        <Options updateFeedback={updateFeedback} />
+      <Description />
+
+      <Options
+        updateFeedback={updateFeedback}
+        resetFeedback={resetFeedback}
+        totalFeedback={totalFeedback}
+      />
+
+      {totalFeedback ? (
         <Feedback
-          feedbackList={feedbackList}
+          feedbackGrades={feedbackGrades}
           totalFeedback={totalFeedback}
           positiveFeedback={positiveFeedback}
         />
-      </main>
+      ) : (
+        <p>No feedback yet</p>
+      )}
     </div>
   );
 };
