@@ -2,6 +2,9 @@ import Description from "./Description/Description";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
 import { useState, useEffect } from "react";
+import css from "./App.module.css";
+import clsx from "clsx";
+import Notification from "./Notification/Notification";
 
 const App = () => {
   const [feedbackGrades, setFeedbackGrades] = useState(() => {
@@ -57,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className={clsx(css.mainWrapper)}>
       <Description />
 
       <Options
@@ -73,7 +76,7 @@ const App = () => {
           positiveFeedback={positiveFeedback}
         />
       ) : (
-        <p>No feedback yet</p>
+        <Notification />
       )}
     </div>
   );

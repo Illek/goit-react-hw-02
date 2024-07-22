@@ -3,33 +3,40 @@ import s from "./Options.module.css";
 
 const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
-    <div>
+    <div className={clsx(s.buttonWrapper, s.elPopOutLight)}>
       <button
-        className={clsx(s.btn)}
+        className={clsx(s.btn, s.btnGreen)}
         onClick={() => {
           updateFeedback("good");
         }}
       >
         Good
       </button>
+
       <button
-        className={clsx(s.btn)}
-        onClick={() => {
-          updateFeedback("neutral");
-        }}
-      >
-        Neutral
-      </button>
-      <button
-        className={clsx(s.btn)}
+        className={clsx(s.btn, s.btnRed)}
         onClick={() => {
           updateFeedback("bad");
         }}
       >
         Bad
       </button>
+
       <button
-        className={clsx(totalFeedback > 0 ? s.visible : s.invisible, s.btn)}
+        className={clsx(s.btn, s.btnNeutral)}
+        onClick={() => {
+          updateFeedback("neutral");
+        }}
+      >
+        Neutral
+      </button>
+
+      <button
+        className={clsx(
+          totalFeedback > 0 ? s.visible : s.invisible,
+          s.btn,
+          s.btnReset
+        )}
         type="button"
         onClick={resetFeedback}
       >
